@@ -1,0 +1,68 @@
+spring:
+  profiles:
+    include: oauth
+
+  datasource:
+    url: ${DB_URL}
+    driver-class-name: org.mariadb.jdbc.Driver
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+    properties:
+      hibernate:
+        format_sql: true
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${MAIL_ADDRESS}
+    password: ${MAIL_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: true
+
+  messages:
+    basename: validation
+    encoding: UTF-8
+    properties:
+      hibernate:
+        auto_quote_keyword: true
+
+  redis:
+    port: ${REDIS_PORT}
+    host: ${REDIS_HOST}
+
+jwt:
+  secret: ${JWT_KEY}
+  refreshToken-validity-in-seconds: ${JWT_REFRESH}
+  token-validity-in-seconds: ${JWT_TOKEN}
+
+
+scheduler:
+  scrap:
+    youtube: "0 0/30 * * * *"
+    weather: "0 0 0 * * *"
+    exchange: "0 0 0 * * *"
+
+naver:
+  geocoding:
+    url: ${NAVER_URL}
+    id: ${NAVER_ID}
+    key: ${NAVER_KEY}
+
+kakao:
+  navigation:
+    url: ${KAKAO_URL}
+    key: ${KAKAO_KEY}

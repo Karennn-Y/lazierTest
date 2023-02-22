@@ -1,0 +1,11 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${OAUTH_ID}
+            client-secret: ${OAUTH_KEY}
+            scope: profile
+            redirect-uri: ${OAUTH_REDIRECT}
+            client-name: google
